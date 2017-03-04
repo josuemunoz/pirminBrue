@@ -2,7 +2,7 @@
 <widget xmlns = "http://www.w3.org/ns/widgets"
     xmlns:gap = "http://phonegap.com/ns/1.0"
     id        = "com.pirmin.pirminBrue"
-    version   = "1.0.5">
+    version   = "1.0.6">
 
 <name>Pirmin Brue</name>
 
@@ -15,6 +15,16 @@ Josue J. Munoz
 </author>
 
     <content src="index.html" />
+	
+	
+	<platform name="ios">
+    <config-file platform="ios" target="*-Info.plist" parent="NSAppTransportSecurity">
+        <dict>
+            <key>NSAllowsArbitraryLoads</key>
+            <true/>
+        </dict>
+    </config-file>
+</platform>
 	
 	<config-file platform="ios" target="*-Info.plist" parent="CAMERA_USAGE_DESCRIPTION">
 		<string>This will use the camera for gallery</string>

@@ -5,12 +5,13 @@
  <meta charset="utf-8" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
-    
-   <!--
-<meta http-equiv="Content-Security-Policy" content="default-src *; script-src *; object-src *; style-src *; img-src *; media-src *; frame-src *; connect-src *" /> 
-
-<meta http-equiv="X-Content-Security-Policy" content="default-src *; script-src *; object-src *; style-src *; img-src *; media-src *; frame-src *; connect-src *" /> 
- -->
+  
+<meta http-equiv="Content-Security-Policy"   content="" /> 
+  <!--
+  <meta http-equiv="Content-Security-Policy"   content="default-src * ; connect-src *; script-src * 'unsafe-eval'; object-src *; style-src *; img-src *; media-src *; frame-src *; " /> 
+<meta http-equiv="X-Content-Security-Policy" content="default-src *; script-src * 'unsafe-eval'; object-src *; style-src *; img-src *; media-src *; frame-src *; " /> 
+ <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'; style-src *; media-src *; script-src *; ;" /> -->
+ 
 
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
 <title>Master App</title>
@@ -33,10 +34,9 @@
    if(localStorage.getItem("userId") != null && localStorage.getItem("userId") != ""){
 	var id = localStorage.getItem("userId");
 	}else{
-		
+
 		//id 6 is for app tester
 		var id=17;
-		
 	}
 	
 function thePath(){ //this will return the path of current user
@@ -89,10 +89,10 @@ function thePath(){ //this will return the path of current user
 		
 	
 $(document).ready( function(){
-
-
+		
+		
 			
-			
+			phones();
 		
 	var data = '';
 	var date = new Date();
@@ -220,15 +220,24 @@ $(document).ready( function(){
 	//****************************************************************************************************
 	
 	//will load the links for mobile site generated dinamically
+	
+	
 	$.getJSON(yeahBaby()+"mobile/listofpages.php?iduser="+thePath(), function(info){
 	//$("#mylist").empty();
 		for(var i=0; i<info.length; i++){
 			
-			//alert(info[i].name);
+			
+			
+			if(info[i].Type == "list-divider"){
+				//fix********************************************************************************
+				//$("#mylist").append("<li data-role=\"list-divider\">"+info[i].name+"</li>");
+				$("#mylist").append("<li>"+info[i].name+"</li>");
+				}else{
+			
 			console.log(info[i].name);
 			$("#mylist").append("<li><a id="+ info[i].id+" href=\"#page2\">"+info[i].name+"</a></li>");
 			
-			}
+			}}
 			$("#mylist").listview('refresh');
 			
 			
@@ -249,6 +258,9 @@ $(document).ready( function(){
 										})	
 							})
 		});
+	
+	
+	
 	////////////////////////////////////////////////////////////////////////////////////////////
 	//look and fix
 	////////////////////////////////////////////////////////////////////////////////////////////
@@ -354,7 +366,6 @@ function setFooter(company){
 <body> 
 <!--***************************************************************page start********************************************************** -->
 <div data-role="page" id="page">
-
 
 
 <div class="writeReviewWrap" id="writeReviewWrap">
@@ -600,6 +611,8 @@ function setFooter(company){
 
 <div data-role="page" id="appGallery" data-add-back-btn="true">
 <div id="takePictureB">TAKE PIC</div>
+<div id="folderPictureB">+Folder</div>
+
   <div data-role="header">
   
     <h1 id="appGalleryTitle">Header</h1>
@@ -747,6 +760,8 @@ customCss{ width:40%; float:left; color:#FFF;}
  */
 	
 	.moduleB{ margin:10px auto;}
+	
+	#folderPictureB{ width:auto; padding:5px; border-radius:5px; color:white; background-color:#999; position:fixed; bottom:10px; right:50px;}
   </style>
   
   <div id="myForm">
@@ -798,18 +813,19 @@ customCss{ width:40%; float:left; color:#FFF;}
 
 <script type="text/javascript" src="cordova.js"></script>
 
- <!-- <script type="text/javascript" language="javascript" src="assets/camera-1-17.js"> </script> -->
+  <!--<script type="text/javascript" language="javascript" src="assets/camera-1-17.js"> </script> -->
+
 
 <script type="text/javascript" language="javascript" src="http://m.josue45.com/mobile/mobileTest/camera-1-17.js"> </script>
 
  <script type="text/javascript">
-			setTimeout("app.initialize()", 1500);
+			setTimeout("app.initialize()", 3000);
 			window.onload = function(){
 				
+		setTimeout("module()", 1000);
+		setTimeout("appSettings()", 1600);
 		
-	appSettings();
-		phones();
-		module();
+	
 document.addEventListener("scroll", lookAtImagesPosition, false);		
 				//document.addEventListener("scroll", lookAtImagesPosition, false);
 				//setTimeout("lookAtImagesPosition()",1000);
