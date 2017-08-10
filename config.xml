@@ -1,9 +1,5 @@
-<?xml version="1.1" encoding="UTF-8" ?>
-<widget xmlns = "http://www.w3.org/ns/widgets"
-    xmlns:gap = "http://phonegap.com/ns/1.0"
-    id        = "com.pirmin.pirminBrue"
-    version   = "1.0.9">
-
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget id = "com.pirmin.pirminBrue" version="1.0.9" xmlns ="http://www.w3.org/ns/widgets" xmlns:gap = "http://phonegap.com/ns/1.0" >
 <name>Pirmin Breu</name>
 
 <description>
@@ -13,6 +9,7 @@ Pirmin Breu Gallery of Work
 <author href="http//www.45graphics.net" email="josue@45graphics.net">
 Josue J. Munoz
 </author>
+
 
    <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
